@@ -15,8 +15,7 @@ export class ArticlePrimaryController {
   }
   @Post()
   public async post(@Body() articlePrimary: ArticlePrimaryDto) {
-    console.log(articlePrimary);
-    return this.articlePrimaryService.get();
+    return this.articlePrimaryService.post(articlePrimary);
   }
   @Patch(':id')
   public async update() {
