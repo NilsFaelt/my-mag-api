@@ -1,4 +1,13 @@
-import { Body, Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Query,
+} from '@nestjs/common';
 import { ArticlePrimaryService } from './article-primary.service';
 import { ArticlePrimaryDto } from './types';
 
@@ -6,23 +15,25 @@ import { ArticlePrimaryDto } from './types';
 export class ArticlePrimaryController {
   constructor(private readonly articlePrimaryService: ArticlePrimaryService) {}
   @Get()
-  public async get() {
-    return this.articlePrimaryService.get();
+  public async get(@Query('authorId') authorId: string) {
+    console.log(authorId);
+    return this.articlePrimaryService.get(authorId);
   }
   @Get(':id')
-  public async getById() {
-    return this.articlePrimaryService.get();
+  public async getById(@Param('id') id: string) {
+    console.log(id);
+    return this.articlePrimaryService.getById(id);
   }
   @Post()
-  public async post(@Body() articlePrimary: ArticlePrimaryDto) {
-    return this.articlePrimaryService.post(articlePrimary);
+  public async create(@Body() articlePrimary: ArticlePrimaryDto) {
+    return this.articlePrimaryService.create(articlePrimary);
   }
   @Patch(':id')
   public async update() {
     return this.articlePrimaryService.get();
   }
   @Delete(':id')
-  public async delete() {
-    return this.articlePrimaryService.get();
+  public async delete(@Param('id') id: string) {
+    return this.articlePrimaryService.delete(id);
   }
 }

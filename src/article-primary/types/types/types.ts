@@ -3,5 +3,5 @@ export interface ArticlePrimaryType {
   text: string;
   content: string;
   image: string;
-  authorId: number;
+  authorId: string;
 }

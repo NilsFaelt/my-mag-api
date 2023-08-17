@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, IsUUID } from 'class-validator';
 export class ArticlePrimaryDto {
   @IsNotEmpty()
   @IsString()
@@ -12,7 +12,8 @@ export class ArticlePrimaryDto {
   @IsNotEmpty()
   @IsString()
   image: string;
+  @IsUUID()
   @IsNotEmpty()
-  @IsNumber()
-  authorId: number;
+  @IsString()
+  authorId: string;
 }

@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "userName" TEXT NOT NULL,
 
@@ -9,10 +9,10 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "Like" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "likedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "userId" INTEGER NOT NULL,
-    "postId" INTEGER NOT NULL,
+    "userId" TEXT NOT NULL,
+    "postId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "deletedAt" TIMESTAMP(3),
 
@@ -21,13 +21,13 @@ CREATE TABLE "Like" (
 
 -- CreateTable
 CREATE TABLE "ArticlePrimary" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "text" TEXT NOT NULL,
     "content" TEXT NOT NULL,
     "image" TEXT NOT NULL,
     "published" BOOLEAN DEFAULT false,
-    "authorId" INTEGER,
+    "authorId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "deletedAt" TIMESTAMP(3),
