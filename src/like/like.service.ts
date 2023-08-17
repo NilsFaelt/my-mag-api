@@ -1,12 +1,14 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { ChooseEntity } from './types';
 
 @Injectable()
 export class LikeService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  public async get({ articlePrimary = false }: { articlePrimary?: boolean }) {
-    if (articlePrimary) return this.topLikedArticlesPrimary();
+  public async get(ChoosenEntity: ChooseEntity = null) {
+    if (ChoosenEntity === 'articlePrimary')
+      return this.topLikedArticlesPrimary();
     else return {};
   }
 

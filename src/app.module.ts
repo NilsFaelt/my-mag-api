@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ArticlePrimaryModule } from './article-primary/article-primary.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { LikeModule } from './like/like.module';
+import { TopRatedModule } from './top-rated/top-rated.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { LikeModule } from './like/like.module';
     ArticlePrimaryModule,
     PrismaModule,
     LikeModule,
+    TopRatedModule,
   ],
   controllers: [],
   providers: [],
