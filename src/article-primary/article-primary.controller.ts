@@ -37,3 +37,7 @@ export class ArticlePrimaryController {
     return this.articlePrimaryService.delete(id);
   }
 }
+
+//fix update
+//add auth
+//check error handling
