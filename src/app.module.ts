@@ -5,6 +5,9 @@ import { ArticlePrimaryModule } from './article-primary/article-primary.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { LikeModule } from './like/like.module';
 import { TopRatedModule } from './top-rated/top-rated.module';
+import { MiddlewareConsumer } from '@nestjs/common';
+import { AllowedUrlsMiddleware } from 'middlewares';
+import { NestModule } from '@nestjs/common';
 
 @Module({
   imports: [
@@ -19,4 +22,8 @@ import { TopRatedModule } from './top-rated/top-rated.module';
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(AllowedUrlsMiddleware).forRoutes('*'); // Apply to all routes
+  }
+}

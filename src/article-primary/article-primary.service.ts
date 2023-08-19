@@ -29,7 +29,9 @@ export class ArticlePrimaryService {
               deletedAt: null,
             },
           },
+          author: true,
         },
+
         orderBy: {
           createdAt: 'desc',
         },

@@ -34,6 +34,7 @@ model ArticlePrimary {
   title     String
   text      String
   content   String
+  category  String               @default("all around")
   image     String
   published Boolean?             @default(false)
   author    User?                @relation(fields: [authorId], references: [id])
