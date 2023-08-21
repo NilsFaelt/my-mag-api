@@ -7,13 +7,16 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ArticlePrimaryService } from './article-primary.service';
 import { ArticlePrimaryDto } from './types';
+import { AuthGuard } from 'guards';
 
 @Controller('article-primary')
 export class ArticlePrimaryController {
   constructor(private readonly articlePrimaryService: ArticlePrimaryService) {}
+  // @UseGuards(AuthGuard)
   @Get()
   public async get(@Query('authorId') authorId: string) {
     console.log(authorId);
