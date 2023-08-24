@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
+import { IsNotEmpty, IsString, IsUUID, IsIn } from 'class-validator';
 export class ArticlePrimaryDto {
   @IsNotEmpty()
   @IsString()
@@ -16,4 +16,7 @@ export class ArticlePrimaryDto {
   @IsNotEmpty()
   @IsString()
   authorId: string;
+  @IsIn(['travel', 'allaround', 'lifestyle', 'food'])
+  @IsNotEmpty()
+  category: 'travel' | 'allaround' | 'lifestyle' | 'food';
 }

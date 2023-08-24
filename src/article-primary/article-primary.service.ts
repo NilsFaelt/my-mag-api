@@ -23,6 +23,9 @@ export class ArticlePrimaryService {
     const [articles, totalCount] = await this.prismaService.$transaction([
       this.prismaService.articlePrimary.findMany({
         take: 4,
+        where: {
+          deletedAt: null,
+        },
         include: {
           Like: {
             where: {

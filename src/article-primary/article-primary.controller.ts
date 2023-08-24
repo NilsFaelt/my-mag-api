@@ -28,6 +28,7 @@ export class ArticlePrimaryController {
   }
   @Post()
   public async create(@Body() articlePrimary: ArticlePrimaryDto) {
+    console.log(articlePrimary, ' in controelrr');
     return this.articlePrimaryService.create(articlePrimary);
   }
   @Patch(':id')
@@ -36,10 +37,9 @@ export class ArticlePrimaryController {
   }
   @Delete(':id')
   public async delete(@Param('id') id: string) {
+    console.log(id, 'test');
     return this.articlePrimaryService.delete(id);
   }
 }
 
-//fix update
 //add auth
-//check error handling

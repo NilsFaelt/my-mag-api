@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common';
-
 import { ConfigModule } from '@nestjs/config';
 import { ArticlePrimaryModule } from './article-primary/article-primary.module';
 import { PrismaModule } from './prisma/prisma.module';
@@ -24,6 +23,10 @@ import { NestModule } from '@nestjs/common';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AllowedUrlsMiddleware).forRoutes('*'); // Apply to all routes
+    consumer.apply().forRoutes('*'); // Apply to all routes
   }
 }
+
+//TODO
+// Add to middlewrae consumer after dev is done
+// AllowedUrlsMiddleware
