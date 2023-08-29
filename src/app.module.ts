@@ -7,9 +7,14 @@ import { TopRatedModule } from './top-rated/top-rated.module';
 import { MiddlewareConsumer } from '@nestjs/common';
 import { AllowedUrlsMiddleware } from 'middlewares';
 import { NestModule } from '@nestjs/common';
+import { UserModule } from './user/user.module';
+import { FirebaseModule } from './firebase/firebase.module';
+import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     ConfigModule.forRoot({
       isGlobal: true,
     }),
@@ -17,6 +22,8 @@ import { NestModule } from '@nestjs/common';
     PrismaModule,
     LikeModule,
     TopRatedModule,
+    UserModule,
+    FirebaseModule,
   ],
   controllers: [],
   providers: [],

@@ -1,1 +1,1 @@
-export * from './AuthGuard.guard';
+export * from './FireBaseAuthGuard.guard';

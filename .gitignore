@@ -36,3 +36,4 @@ lerna-debug.log*
 
 # secrets
 .env
+my-ma-40b0c-firebase-adminsdk-phqxc-2b06b145b6.json
