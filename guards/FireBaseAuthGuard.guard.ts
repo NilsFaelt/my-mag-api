@@ -13,14 +13,14 @@ export class FirebaseAuthGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
-    const idToken = request.headers.authorization.split(' ')[1]; // Extract the ID token
+    const idToken = request.headers.authorization.split(' ')[1]; 
     console.log(idToken);
     try {
       const decodedToken = await this.firebaseAuthService.verifyIdToken(
         idToken,
       );
       if (decodedToken) {
-        // You can add additional validation logic here if needed
+        
         return true;
       } else {
         throw new UnauthorizedException('Invalid token');
