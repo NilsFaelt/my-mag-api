@@ -27,6 +27,7 @@ export class ArticlePrimaryController {
   }
   @Get(':id')
   public async getById(@Param('id') id: string) {
+    console.log(id);
     return this.articlePrimaryService.getById(id);
   }
   @UseGuards(FirebaseAuthGuard)

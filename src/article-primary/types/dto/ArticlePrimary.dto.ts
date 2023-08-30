@@ -12,7 +12,6 @@ export class ArticlePrimaryDto {
   @IsNotEmpty()
   @IsString()
   image: string;
-  @IsUUID()
   @IsNotEmpty()
   @IsString()
   authorId: string;

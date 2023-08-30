@@ -26,6 +26,9 @@ export class ArticlePrimaryService {
         where: {
           deletedAt: null,
         },
+        include: {
+          author: true,
+        },
 
         orderBy: {
           createdAt: 'desc',
@@ -41,6 +44,9 @@ export class ArticlePrimaryService {
       where: {
         id: id,
       },
+      include: {
+        author: true,
+      },
     });
     if (!article)
       throw new HttpException('Article not found', HttpStatus.NOT_FOUND);
@@ -48,11 +54,11 @@ export class ArticlePrimaryService {
   }
 
   public async create(article: ArticlePrimaryType) {
-    console.log(article);
     try {
       const articlePrimary = await this.prismaService.articlePrimary.create({
         data: article,
       });
+
       return articlePrimary;
     } catch (error) {
       if (error.code === 'P2002') {
