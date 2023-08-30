@@ -26,14 +26,14 @@ export class ArticlePrimaryService {
         where: {
           deletedAt: null,
         },
-        include: {
-          Like: {
-            where: {
-              deletedAt: null,
-            },
-          },
-          author: true,
-        },
+        // include: {
+        //   Like: {
+        //     where: {
+        //       deletedAt: null,
+        //     },
+        //   },
+        //   author: true,
+        // },
 
         orderBy: {
           createdAt: 'desc',

@@ -7,9 +7,10 @@ import { UserDto } from './types';
 export class UserService {
   constructor(private readonly prismaService: PrismaService) {}
   public async create(user: UserDto) {
-    this.prismaService.user.create({
+    const newUser = await this.prismaService.user.create({
       data: user,
     });
+    console.log(newUser);
   }
   public async update() {
     console.log('patch');

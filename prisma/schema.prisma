@@ -11,36 +11,24 @@ datasource db {
 }
 
 model User {
-  id       String               @id @default(uuid())
-  email    String               @unique
-  userName String               @unique
-  posts    ArticlePrimary[]
-  Like     ArticlePrimaryLike[]
-}
-
-model ArticlePrimaryLike {
-  id        String         @id @default(uuid())
-  likedAt   DateTime       @default(now())
-  userId    String
-  user      User           @relation(fields: [userId], references: [id])
-  postId    String
-  post      ArticlePrimary @relation(fields: [postId], references: [id])
-  createdAt DateTime       @default(now())
-  deletedAt DateTime?
+  id             String           @id @default(uuid())
+  googleUid      String           @unique
+  email          String           @unique
+  userName       String           @unique
+  articlePrimary ArticlePrimary[]
 }
 
 model ArticlePrimary {
-  id        String               @id @default(uuid())
+  id        String    @id @default(uuid())
   title     String
   text      String
   content   String
-  category  String               @default("all around")
+  category  String    @default("all around")
   image     String
-  published Boolean?             @default(false)
-  author    User?                @relation(fields: [authorId], references: [id])
+  published Boolean?  @default(false)
+  author    User?     @relation(fields: [authorId], references: [id])
   authorId  String?
-  createdAt DateTime             @default(now())
-  updatedAt DateTime             @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   deletedAt DateTime?
-  Like      ArticlePrimaryLike[]
 }

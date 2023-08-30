@@ -2,8 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ArticlePrimaryModule } from './article-primary/article-primary.module';
 import { PrismaModule } from './prisma/prisma.module';
-import { LikeModule } from './like/like.module';
-import { TopRatedModule } from './top-rated/top-rated.module';
 import { MiddlewareConsumer } from '@nestjs/common';
 import { AllowedUrlsMiddleware } from 'middlewares';
 import { NestModule } from '@nestjs/common';
@@ -20,8 +18,6 @@ import { JwtModule } from '@nestjs/jwt';
     }),
     ArticlePrimaryModule,
     PrismaModule,
-    LikeModule,
-    TopRatedModule,
     UserModule,
     FirebaseModule,
   ],
