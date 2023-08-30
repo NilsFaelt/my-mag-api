@@ -26,14 +26,6 @@ export class ArticlePrimaryService {
         where: {
           deletedAt: null,
         },
-        // include: {
-        //   Like: {
-        //     where: {
-        //       deletedAt: null,
-        //     },
-        //   },
-        //   author: true,
-        // },
 
         orderBy: {
           createdAt: 'desc',
@@ -56,6 +48,7 @@ export class ArticlePrimaryService {
   }
 
   public async create(article: ArticlePrimaryType) {
+    console.log(article);
     try {
       const articlePrimary = await this.prismaService.articlePrimary.create({
         data: article,
@@ -67,7 +60,7 @@ export class ArticlePrimaryService {
           `Duplicate field. ${error.meta.target} already exists.`,
         );
       }
-
+      console.log(error);
       throw new InternalServerErrorException('Error creating the article.');
     }
   }
