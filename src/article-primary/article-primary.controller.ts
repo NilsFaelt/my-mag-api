@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Injectable,
   Param,
   Patch,
   Post,
@@ -13,7 +14,9 @@ import { ArticlePrimaryService } from './article-primary.service';
 import { ArticlePrimaryDto } from './types';
 import { FirebaseAuthGuard } from 'guards';
 import { FirebaseService } from 'src/firebase/firebase.service';
+import { CurrentUser } from 'decorators';
 
+@Injectable()
 @Controller('article-primary')
 export class ArticlePrimaryController {
   constructor(
@@ -32,7 +35,10 @@ export class ArticlePrimaryController {
   }
   @UseGuards(FirebaseAuthGuard)
   @Post()
-  public async create(@Body() articlePrimary: ArticlePrimaryDto) {
+  public async create(
+    @CurrentUser('user_id') userId: string,
+    @Body() articlePrimary: ArticlePrimaryDto,
+  ) {
     return this.articlePrimaryService.create(articlePrimary);
   }
   @UseGuards(FirebaseAuthGuard)
@@ -42,8 +48,10 @@ export class ArticlePrimaryController {
   }
   @UseGuards(FirebaseAuthGuard)
   @Delete(':id')
-  public async delete(@Param('id') id: string) {
-    console.log(id, 'test');
+  public async delete(
+    @CurrentUser('user_id') userId: string,
+    @Param('id') id: string,
+  ) {
     return this.articlePrimaryService.delete(id);
   }
 }
